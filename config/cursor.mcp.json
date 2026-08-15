@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "coding-memory": {
+      "url": "http://192.168.0.9:8000/mcp/",
+      "headers": {"X-API-Key": "${CODING_MEMORY_MCP_API_KEY}"}
+    }
+  }
+}

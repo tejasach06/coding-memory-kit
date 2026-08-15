@@ -1,0 +1,26 @@
+[Unit]
+Description=Authenticated Qdrant MCP server - legacy SSE
+Requires=qdrant-mcp.service
+After=qdrant-mcp.service
+
+[Container]
+Image=localhost/mcp-server-qdrant:numpy2
+ContainerName=mcp-qdrant-sse
+Network=host
+Volume=/opt/qdrant-mcp/model-cache:/root/.cache:Z
+Volume=/opt/qdrant-mcp/server/mcp_auth_launcher.py:/app/mcp_auth_launcher.py:ro,Z
+EnvironmentFile=/opt/qdrant-mcp/secrets/coding-memory.env
+Environment=QDRANT_URL=http://192.168.0.9:6333
+Environment=COLLECTION_NAME=agent-memories
+Environment=EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
+Environment=QDRANT_ALLOW_ARBITRARY_FILTER=true
+Environment=FASTMCP_SERVER_HOST=192.168.0.9
+Environment=FASTMCP_SERVER_PORT=8001
+Exec=python /app/mcp_auth_launcher.py --transport sse
+
+[Service]
+Restart=always
+TimeoutStartSec=180
+
+[Install]
+WantedBy=default.target

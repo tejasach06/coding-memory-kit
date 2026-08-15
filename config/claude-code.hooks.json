@@ -1,0 +1,7 @@
+{
+  "hooks": {
+    "SessionStart": [{"hooks": [{"type": "command", "command": "./coding-memory-kit/hooks/claude-memory-hook.py session-start"}]}],
+    "UserPromptSubmit": [{"hooks": [{"type": "command", "command": "./coding-memory-kit/hooks/claude-memory-hook.py prompt"}]}],
+    "Stop": [{"hooks": [{"type": "command", "command": "./coding-memory-kit/hooks/claude-memory-hook.py stop"}]}]
+  }
+}

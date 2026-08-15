@@ -1,0 +1,7 @@
+{
+  "name": "coding-memory",
+  "transport": "streamable-http",
+  "url": "http://192.168.0.9:8000/mcp/",
+  "headers": {"X-API-Key": "${CODING_MEMORY_MCP_API_KEY}"},
+  "note": "Client-specific MCP configuration; validate field names against the client documentation."
+}

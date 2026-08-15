@@ -1,0 +1,20 @@
+[Unit]
+Description=Qdrant vector database for coding-agent memory
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=docker.io/qdrant/qdrant:latest
+ContainerName=qdrant-mcp
+Network=host
+Volume=/opt/qdrant-mcp/qdrant-storage:/qdrant/storage:Z
+EnvironmentFile=/opt/qdrant-mcp/secrets/coding-memory.env
+Environment=QDRANT__SERVICE__HTTP_PORT=6333
+Environment=QDRANT__SERVICE__GRPC_PORT=6334
+
+[Service]
+Restart=always
+TimeoutStartSec=180
+
+[Install]
+WantedBy=default.target

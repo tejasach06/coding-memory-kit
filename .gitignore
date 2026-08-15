@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+*.swp
+*.tmp
+state/
+fingerprints.json
+.env
+*.env.local
+.DS_Store
